@@ -1,0 +1,48 @@
+#include <conio.h>
+#include <stdio.h>
+#include <stdlib.h>
+
+struct user {                     // struct de entrada
+	char nome[20];
+	int dia;
+	int mes;
+};
+
+int main() {
+
+	int cont, reg;
+	char ch;
+
+	struct user dados[12], * ponteiro;  //dados inseridos para leitura do ponteiro
+
+	for (cont = 0; cont < 3; cont++) {
+		printf("Digite o %d registro", cont + 1);
+
+		printf("\nDigite o nome : ");
+		fgets(dados[cont].nome, 19, stdin);
+
+		printf("\nDigite o dia do aniversario : ");
+		scanf_s("%d", &dados[cont].dia);
+		ch = getchar();
+
+		printf("\nDigite o mes do aniversario : ");
+		scanf_s("%d", &dados[cont].mes);
+		ch = getchar();
+
+		printf("\n\n\n");
+	}
+
+	ponteiro = dados;   // ponteiro dos  dados
+
+	for (cont = 1; cont <= 12; cont++) {
+		printf("\nAniversariantes do mes %d", cont);
+		for (reg = 0; reg < 3; reg++) {
+
+			if ((ponteiro + reg)->mes == cont) {
+				printf("\nAniversariante: %s dia: %d", (ponteiro + reg)->nome, (ponteiro + reg)->dia);
+
+			}
+		}
+	}
+
+}
